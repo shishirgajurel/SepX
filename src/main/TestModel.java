@@ -1,86 +1,102 @@
 package main;
 
 import Model.*;
-import parser.ParserException;
-import utils.*;
+import Model.PetModelManager;
 
 public class TestModel
 {
-  public static void main(String[] args) throws ParserException
+  public static void main(String[] args)
   {
-    Cat cat0 = new Cat("Lea", 'f', "She ate a cup cake", new MyDate(4,4,1997), "White" ,new Customer("Ahmad", "1234567890", "asd@asd.asd"), "a good breed", "My mother");
-    Cat cat1 = new Cat("Milo", 'm', "Loves to play", new MyDate(1,1,2018), "Black", new Customer("khaled", "1234567891", "john.doe@example.com"), "Persian", "John's family");
-    Cat cat2 = new Cat("Bella", 'f', "Very affectionate", new MyDate(2,2,2019), "White", new Customer("Youssef", "1234567892", "jane.doe@example.com"), "Siamese", "Jane's family");
-    Cat cat3 = new Cat("Oliver", 'm', "Curious and playful", new MyDate(3,3,2020), "Orange", new Customer("Thea", "1234567893", "alice.smith@example.com"), "Maine Coon", "Alice's family");
-    Cat cat4 = new Cat("Luna", 'f', "Loves to climb", new MyDate(4,4,2021), "Gray", new Customer("Jack", "1234567894", "bob.johnson@example.com"), "Russian Blue", "Bob's family");
-    Cat cat5 = new Cat("Charlie", 'm', "Very vocal", new MyDate(5,5,2022), "Brown", new Customer("Amir", "1234567895", "carol.williams@example.com"), "Bengal", "Carol's family");
-    Cat cat6 = new Cat("Lucy", 'f', "Loves to nap", new MyDate(6,6,2023), "Calico", new Customer("Mahmood", "1234567896", "dave.brown@example.com"), "Ragdoll", "Dave's family");
-    Cat cat7 = new Cat("Leo", 'm', "Very friendly", new MyDate(7,7,2024), "Golden", new Customer("Samir", "1234567897", "eve.davis@example.com"), "British Shorthair", "Eve's family");
-    Cat cat8 = new Cat("Nala", 'f', "Loves to hunt", new MyDate(8,8,2025), "Black and White", new Customer("Sally", "1234567898", "frank.miller@example.com"), "Sphynx", "Frank's family");
-    Cat cat9 = new Cat("Simba", 'm', "Very playful", new MyDate(9,9,2026), "Tabby", new Customer("Kinan", "1234567899", "grace.wilson@example.com"), "Abyssinian", "Grace's family");
-    Cat cat10 = new Cat("Chloe", 'f', "Loves to cuddle", new MyDate(10,10,2027), "Tortoiseshell", new Customer("Salem", "1234567800", "hank.moore@example.com"), "Scottish Fold", "Hank's family");
+    Cat cat = new Cat("Misty", 'F', "Does not Bite, and she is okay with kids", new MyDate(1, 1, 2019), "White", 1000, "Siamese", "John");
+    Dog dog = new Dog("Rex", 'M', "Does not bark", new MyDate(2, 1, 2019), "Brown", 2000, "Golden Retriever", "John");
+    Bird bird = new Bird("Tweety", 'F', "Can talk", new MyDate(3, 1, 2019), "Yellow", 500, "Parrot", "John");
+    Fish fish = new Fish("Goldie", 'M', "Swims fast", new MyDate(4, 1, 2019), "Gold", 50, true, false);
+    Various various = new Various("Fluffy", 'F', "Does not bite", new MyDate(5, 1, 2019), "Black", 200, "Rabbit");
+    Rodents rodents = new Rodents("Jerry", 'M', "Eats cheese", new MyDate(6, 1, 2019), "Gray", 100, "Mouse");
+    Cat cat1 = new Cat("Milo", 'm', "Loves to play", new MyDate(1, 1, 2018), "Black", 1000, "Persian", "John's family");
+    Cat cat2 = new Cat("Bella", 'f', "Very affectionate", new MyDate(2, 2, 2019), "White", 1000, "Siamese", "Jane's family");
+    Dog dog1 = new Dog("Rexion", 'M', "Does not bark", new MyDate(3, 3, 2020), "Brown", 2000, "Golden Retriever", "John's family");
+    Bird bird1 = new Bird("Tweetah", 'F', "Can talk", new MyDate(4, 4, 2021), "Yellow", 500, "Parrot", "John's family");
+    Fish  fish1 = new Fish("Golden", 'M', "Swims fast", new MyDate(5, 5, 2022), "Gold", 50, true, false);
+    Various various1 = new Various("Fluffy", 'F', "Does not bite", new MyDate(6, 6, 2023), "Black", 200, "Rabbit");
+    Rodents rodents1 = new Rodents("Jerry", 'M', "Eats cheese", new MyDate(7, 7, 2024), "Gray", 100, "Mouse");
+    Dog dog2 = new Dog("Rex", 'M', "Does not bark", new MyDate(8, 8, 2025), "Brown", 2000, "Golden Retriever", "John's family");
+    Bird bird2 = new Bird("Tweetah", 'F', "Can talk", new MyDate(9, 9, 2026), "Yellow", 500, "Parrot", "John's family");
 
 
     PetList petList = new PetList();
-    petList.addPet(cat0);
+    petList.addPet(cat);
+    petList.addPet(dog);
+    petList.addPet(bird);
+    petList.addPet(fish);
+    petList.addPet(various);
+    petList.addPet(rodents);
     petList.addPet(cat1);
     petList.addPet(cat2);
-    petList.addPet(cat3);
-    petList.addPet(cat4);
-    petList.addPet(cat5);
-    petList.addPet(cat6);
-    petList.addPet(cat7);
-    petList.addPet(cat8);
-    petList.addPet(cat9);
-    petList.addPet(cat10);
+    petList.addPet(dog1);
+    petList.addPet(bird1);
+    petList.addPet(fish1);
+    petList.addPet(various1);
+    petList.addPet(rodents1);
+    petList.addPet(dog2);
+    petList.addPet(bird2);
 
-    Bird bird0 = new Bird("Kiwi", 'm', "Very friendly", new MyDate(4,4,1997), "Green", 100, "Parrot", "Seeds");
-    Sale sale0 = new Sale(new MyDate(4,4,1997), bird0, new Customer("Ahmad", "1234567890", "asd@asd.asd"));
+
+    Customer customer1 = new Customer ("John", "71846557", "john@gmail.com");
+    Customer customer2 = new Customer ("Jane", "71146258", "jane@gmail.com");
+    Customer customer3 = new Customer ("Sam", "26843257", "sam@gmao.com");
+    Customer customer4 = new Customer ("Sara", "92036557", "sara@gmail.com");
+    Customer customer5 = new Customer ("Sally", "71231457", "sally@gmail.com");
+    Customer customer6 = new Customer ("Sana", "92036224", "sana@gmail.com");
+    Customer customer7 = new Customer ("Karim", "92036123", "karim@gmail.com");
+
+
+    CustomerList customerList = new CustomerList();
+    customerList.addCustomer(customer1);
+    customerList.addCustomer(customer2);
+    customerList.addCustomer(customer3);
+    customerList.addCustomer(customer4);
+    customerList.addCustomer(customer5);
+    customerList.addCustomer(customer6);
+    customerList.addCustomer(customer7);
+
+
+    Sale sale = new Sale(cat, customer1);
+    Sale sale1 = new Sale(dog1, customer2);
+    Sale sale2 = new Sale(dog2, customer3);
+    Sale sale3 = new Sale(fish, customer4);
+    Sale sale4 = new Sale(cat1, customer5);
 
     SalesLog salesLog = new SalesLog();
-    salesLog.addSale(sale0);
+    salesLog.addSale(sale);
+    salesLog.addSale(sale1);
+    salesLog.addSale(sale2);
+    salesLog.addSale(sale3);
+    salesLog.addSale(sale4);
 
-    //    System.out.println(salesLog);
-    Reservation reservation1 = new Reservation(cat1, new MyDate(6, 12, 2024), new MyDate(13, 1, 2025));
-    Reservation reservation2 = new Reservation(cat2, new MyDate(8, 12, 2024), new MyDate(10, 12, 2024));
-    Reservation reservation3 = new Reservation(cat3, new MyDate(11, 12, 2024), new MyDate(24, 12, 2024));
-    Reservation reservation4 = new Reservation(cat4, new MyDate(25, 12, 2024), new MyDate(28, 12, 2024));
-    Reservation reservation5 = new Reservation(cat5, new MyDate(6, 12, 2024), new MyDate(7, 12, 2024));
-    Reservation reservation6 = new Reservation(cat6, new MyDate(7, 12, 2024), new MyDate(8, 12, 2024));
-    Reservation reservation7 = new Reservation(cat7, new MyDate(6, 12, 2024), new MyDate(7, 12, 2024));
-    Reservation reservation8 = new Reservation(cat8, new MyDate(6, 12, 2024), new MyDate(8, 12, 2024));
-    Reservation reservation9 = new Reservation(cat9, new MyDate(6, 12, 2024), new MyDate(8, 12, 2024));
-    //    Reservation reservation10 = new Reservation(cat10, new MyDate(6, 12, 2024), new MyDate(8, 12, 2024));
-    //   Reservation reservation11 = new Reservation(cat0, new MyDate(1, 1, 2025), new MyDate(12, 1, 2025));
-    //   Reservation reservation12 = new Reservation(cat0, new MyDate(6, 12, 2024), new MyDate(11, 12, 2024));
-    //    Reservation reservation13 = new Reservation(cat0, new MyDate(6, 12, 2024), new MyDate(11, 12, 2024));
-    //    Reservation reservation14 = new Reservation(cat0, new MyDate(6, 12, 2024), new MyDate(11, 12, 2024));
-    //    Reservation reservation15 = new Reservation(cat0, new MyDate(6, 12, 2024), new MyDate(11, 12, 2024));
-    //    Reservation reservation16 = new Reservation(cat0, new MyDate(6, 12, 2024), new MyDate(11, 12, 2024));
+    PetModelManager petModelManager = new PetModelManager("pets.bin");
+    petModelManager.savePets(petList);
+    petModelManager.saveToXML(petList,"pets.xml");
 
+    CustomerModelManager customerModelManager = new CustomerModelManager("customers.bin");
+    customerModelManager.saveCustomers(customerList);
+
+    SaleModelManager saleModelManager = new SaleModelManager("sales.bin");
+    saleModelManager.saveSales(salesLog);
+
+    Reservation reservation0 = new Reservation(cat1, new MyDate(12,12,2024), new MyDate(12,12,2026));
+   Reservation reservation1 = new Reservation(dog1, new MyDate(12,12,2024), new MyDate(12,12,2026));
+//  Reservation reservation2 = new Reservation(dog2, new MyDate(12,12,2024), new MyDate(12,12,2026));
 
     ReservationList reservationList = new ReservationList();
+   reservationList.addReservation(reservation0);
     reservationList.addReservation(reservation1);
-    reservationList.addReservation(reservation2);
-    reservationList.addReservation(reservation3);
-    reservationList.addReservation(reservation4);
-    reservationList.addReservation(reservation5);
-    reservationList.addReservation(reservation6);
-    reservationList.addReservation(reservation7);
-    reservationList.addReservation(reservation8);
-    reservationList.addReservation(reservation9);
-    //    reservationList.addReservation(reservation10);
-    //    reservationList.addReservation(reservation11);
+//    reservationList.addReservation(reservation2);
 
-    //    reservation11.setStartDate(new MyDate(5, 12, 2024), reservationList);
-    //    System.out.println(reservationList.getOverlappingReservationsCount(reservation3));
+    ReservationModelManager reservationModelManager = new ReservationModelManager("reservations.bin");
+    reservationModelManager.saveReservations(reservationList);
 
-     ReservationModelManager reservationModelManager = new ReservationModelManager("reservations.bin");
-      reservationModelManager.saveReservations(reservationList);
-      reservationModelManager.saveToXML(reservationList, "reservations.xml");
 
-    //PetModelManager petModelManager = new PetModelManager("pets.bin");
-   // petModelManager.savePets(petList);
-   // petModelManager.saveToXML(petList, "pets.xml");
+//    System.out.println(saleModelManager.getAllSales());
   }
 }

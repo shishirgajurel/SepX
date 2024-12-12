@@ -24,7 +24,7 @@ import javafx.scene.control.TextField;
  // @FXML private TableColumn<Pet, String> listOfPets;
    @FXML private TableColumn<Pet, String> petName;
    @FXML private TableView<Pet> petTable;
-   @FXML private TableView<Pet> listOfReservations;
+   @FXML private TableView<Reservation> listOfReservations;
   @FXML private TextField listOfSearchByPhoneNumber;
   @FXML private TextField listOfSearchByCustomerName;
   @FXML private Button listOfPetsSearchButton;
@@ -32,16 +32,23 @@ import javafx.scene.control.TextField;
   @FXML private DatePicker listOfEndDate;
   @FXML private Button listOfCheckAvailability;
   @FXML private TextArea listOfAvailable;
-  @FXML private TableColumn<Pet, String> listOfPetCustomer;
-  @FXML private TableColumn<Pet, String> listOfPetName;
-  @FXML private TableColumn<Pet, String> listoflistOfStartDate;
-  @FXML private TableColumn<Pet, String> listoflistOfEndDate;
+  @FXML private TableColumn<Reservation, String> listOfPetCustomer;
+  @FXML private TableColumn<Reservation, String> listOfPetName;
+  @FXML private TableColumn<Reservation, MyDate> listoflistOfStartDate;
+  @FXML private TableColumn<Reservation, MyDate> listoflistOfEndDate;
   @FXML private Button listOfUpdate;
   @FXML private Button listOfDelete;
 
 
   public void initialize()
   {
+
+    listOfPetName.setCellValueFactory(new PropertyValueFactory<>("petName"));
+    listOfPetCustomer.setCellValueFactory(new PropertyValueFactory<>("customer"));
+    listoflistOfStartDate.setCellValueFactory(new PropertyValueFactory<>("startDate"));
+    listoflistOfEndDate.setCellValueFactory(new PropertyValueFactory<>("endDate"));
+
+    petName.setCellValueFactory(new PropertyValueFactory<>("name"));
     PetModelManager petModelManager = new PetModelManager("pets.bin");
     PetList allPets = petModelManager.getAllPets();
     petTable.getItems().clear();
@@ -49,7 +56,7 @@ import javafx.scene.control.TextField;
     {
       petTable.getItems().add(allPets.getByIndex(i));
     }
-    petName.setCellValueFactory(new PropertyValueFactory<>("name"));
+
 
     ReservationModelManager reservationModelManager = new ReservationModelManager("reservations.bin");
     ReservationList allReservations = reservationModelManager.getAllReservations();
@@ -59,10 +66,9 @@ import javafx.scene.control.TextField;
     {
       listOfReservations.getItems().add(allReservations.getByIndex(i));
     }
-    listOfPetName.setCellValueFactory(new PropertyValueFactory<>("name"));
-    listOfPetCustomer.setCellValueFactory(new PropertyValueFactory<>("customer"));
-    listoflistOfStartDate.setCellValueFactory(new PropertyValueFactory<>("startDate"));
-    listoflistOfEndDate.setCellValueFactory(new PropertyValueFactory<>("endDate"));
+    // how to lead property value factory to read start date and end date from reservation class not from Cat class
+
+
 
   }
 
@@ -109,8 +115,38 @@ import javafx.scene.control.TextField;
       alert.setHeaderText(null);
       alert.showAndWait();
       if (alert.getResult() == ButtonType.YES) {
+
         System.out.println("Deleted Sucessfully");
       }
+    }
+    else if (event.getSource() == checkAvailability ){
+      ReservationModelManager reservationModelManager = new ReservationModelManager("reservations.bin");
+      ReservationList allReservations = reservationModelManager.checkAvailability(searchByPhoneNumber.getText(), startDate.getValue(), endDate.getValue());
+    }
+    else if (event.getSource() == searchButton){
+      CustomerModelManager customerModelManager = new CustomerModelManager("customers.bin");
+      CustomerList allCustomers = customerModelManager.getAllCustomers();
+     Customer petsByCustomer = allCustomers.getCustomerByPhoneNumber(searchByPhoneNumber.getText());
+
+      PetModelManager petModelManager = new PetModelManager("pets.bin");
+      PetList allPets = petModelManager.getAllPets();
+     PetList petCustomerx = allPets.getPetsByCustomer(petsByCustomer);
+      petTable.getItems().clear();
+      System.out.println(petCustomerx);
+      for (int i = 0; i < petCustomerx.size(); i++)
+      {
+        petTable.getItems().add(petCustomerx.getByIndex(i));
+      }
+    }
+    MyDate addreservationBirthDate = null;
+    if (event.getSource() == startDate){
+      addreservationBirthDate = new MyDate(startDate.getValue().getDayOfMonth(), startDate.getValue().getMonthValue(), startDate.getValue().getYear());
+    }
+
+
+    MyDate addreservationEndDate = null;
+    if (event.getSource() == endDate){
+      addreservationEndDate = new MyDate(endDate.getValue().getDayOfMonth(), endDate.getValue().getMonthValue(), endDate.getValue().getYear());
     }
 
 

@@ -79,9 +79,9 @@ public class ReservationList implements Serializable
    * @param index the index of the reservation.
    * @return the reservation at the specified index.
    */
-  public Pet getByIndex(int index)
+  public Reservation getByIndex(int index)
   {
-    return reservations.get(index).getPet();
+    return reservations.get(index);
   }
 
   /**
@@ -197,4 +197,6 @@ public class ReservationList implements Serializable
       }
     }
   }
+
+
 }

@@ -146,6 +146,11 @@ public class Reservation implements Serializable
     return pet;
   }
 
+  public String getPetName() {
+    return pet.getName();
+  }
+
+
   /**
    * Gets the customer who made the reservation.
    *

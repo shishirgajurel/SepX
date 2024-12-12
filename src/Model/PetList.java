@@ -69,7 +69,7 @@ public class PetList implements Serializable
     PetList petList = new PetList();
     for (int i = 0; i < pets.size(); i++)
     {
-      if (pets.get(i).getCustomer().equals(customer))
+      if (pets.get(i).getCustomer() != null && pets.get(i).getCustomer().equals(customer))
       {
         petList.addPet(pets.get(i));
       }

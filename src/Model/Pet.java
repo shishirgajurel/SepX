@@ -152,6 +152,7 @@ public abstract class Pet implements Serializable
   public void setCustomer(Customer customer)
   {
     this.customer = customer;
+    this.price = -1;
   }
 
   /**
@@ -210,8 +211,18 @@ public abstract class Pet implements Serializable
     }
 
     Pet other = (Pet) obj;
+
+    if (price != -1)
+    {
     return other.name.equals(name) && other.gender == gender && other.comment
         .equals(comment) && other.birthDate.equals(birthDate) && other.color
-        .equals(color) && other.price == price && other.customer.equals(customer);
+        .equals(color) && other.price == price;
+    }
+    else
+    {
+      return other.name.equals(name) && other.gender == gender
+          && other.comment.equals(comment) && other.birthDate.equals(birthDate)
+          && other.color.equals(color) && other.customer.equals(customer);
+    }
   }
 }

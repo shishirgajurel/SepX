@@ -1,10 +1,13 @@
 package Model;
+import javafx.geometry.Pos;
 import parser.ParserException;
 import parser.XmlJsonParser;
 import utils.MyFileHandler;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.LocalDate;
+
 public class ReservationModelManager
 {
   private String fileName;
@@ -88,6 +91,16 @@ public class ReservationModelManager
   public void checkAvailability(ReservationList reservations, String phoneNumber, MyDate startDate, MyDate endDate)
   {
     reservations.checkAvailability(phoneNumber, startDate, endDate);
+  }
+
+  public ReservationList setStartDate(Pos alignment, LocalDate value)
+  {
+    return null;
+  }
+
+  public ReservationList checkAvailability(String text, LocalDate value, LocalDate value1)
+  {
+    return null;
   }
 
 }

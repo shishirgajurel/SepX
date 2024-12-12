@@ -14,12 +14,26 @@ public class Dog extends Pet
   /**
    * constructor with price-pet for sale
    */
-  public Dog(String name, int age, char gender, String comment, MyDate birthDate, String color, int price, String breed, String breeder)
+  public Dog(String name, char gender, String comment, MyDate birthDate, String color, int price, String breed, String breeder)
   {
     super(name, gender, comment, birthDate, color, price);
     this.breed = breed;
     this.breeder = breeder;
   }
+
+  /**
+   * constructor with customer-kenneled pet
+   * @param name,gender,comment,birthDate,color,customer form super class
+   * @param breed specific for this class
+   * @param breeder specific for this class
+   */
+  public Dog(String name, char gender, String comment, MyDate birthDate, String color, Customer customer, String breed, String breeder)
+  {
+    super(name, gender, comment, birthDate, color, customer);
+    this.breed = breed;
+    this.breeder = breeder;
+  }
+
   /**
    * constructor with customer-kenneled pet
    * @return breed

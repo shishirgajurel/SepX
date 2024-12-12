@@ -1,6 +1,7 @@
 package Model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 /**
  * Represents a sale of a pet.
@@ -20,13 +21,13 @@ public class Sale implements Serializable
   private double price;
 
   /**
-   * Constructor with 3 parameters.
+   * Constructor with 2 parameters.
    *
-   * @param saleDate,pet,customer parameters.
+   * @param pet,customer parameters.
    * sets the customer of the pet to the customer parameter, and sets the price of the pet to -1.
    * @throws IllegalArgumentException if the pet belongs to a customer.
    */
-  public Sale (MyDate saleDate, Pet pet, Customer customer)
+  public Sale (Pet pet, Customer customer)
   {
     if (pet.getPrice() == -1)
     {
@@ -34,12 +35,11 @@ public class Sale implements Serializable
     }
     else
     {
-      this.saleDate = saleDate.copy();
+      this.saleDate = new MyDate(LocalDate.now().getDayOfMonth(), LocalDate.now().getMonthValue(), LocalDate.now().getYear());
       this.pet = pet;
-      this.discount = 0.0;
-      this.pet.setCustomer(customer);
+      this.discount = 0;
       this.price = pet.getPrice();
-      this.pet.setPrice(-1);
+      this.pet.setCustomer(customer);
     }
   }
 
@@ -62,6 +62,24 @@ public class Sale implements Serializable
   }
 
   /**
+   * get the name of the pet.
+   * @return the name of the pet.
+   */
+  public String getPetName()
+  {
+    return pet.getName();
+  }
+
+  /**
+   * set the pet.
+   * @param pet to set.
+   */
+  public void setPet(Pet pet)
+  {
+    this.pet = pet;
+  }
+
+  /**
    * get the customer.
    * @return the customer.
    */
@@ -81,6 +99,7 @@ public class Sale implements Serializable
 
   /**
    * set the discount as a double.
+   * multiplies the price of the pet by the discount.
    * @param discount as double.
    */
   public void setDiscount(double discount)
@@ -89,24 +108,14 @@ public class Sale implements Serializable
   }
 
   /**
-   * get the final price of the pet.
-   * multiplies the price of the pet by the discount.
-   * @return the final price.
-   */
-  public double getFinalPrice()
-  {
-    price = price - price*discount;
-    return price;
-  }
-
-  /**
    * get the price of the pet.
    * @return the price.
    */
   public double getPrice()
   {
-    return price;
+    return price - (price * discount / 100);
   }
+
 
   /**
    * Provides a string representation of the Sale.
@@ -114,7 +123,7 @@ public class Sale implements Serializable
    */
   public String toString()
   {
-    return "Pet: "+pet + "\nCustomer: "+pet.getCustomer()+"\nPrice after discount: "+getFinalPrice()+"\nDate: "+saleDate;
+    return "Pet"+pet+ "\nCustomer"+pet.getCustomer()+"\nPrice after discount: "+getPrice()+"\nDate: "+saleDate;
   }
 
   /**
