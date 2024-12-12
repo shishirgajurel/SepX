@@ -75,12 +75,13 @@ public class ReservationList implements Serializable
 
   /**
    * Retrieves a reservation by its index in the list.
+   *
    * @param index the index of the reservation.
    * @return the reservation at the specified index.
    */
-  public Reservation getByIndex(int index)
+  public Pet getByIndex(int index)
   {
-    return reservations.get(index);
+    return reservations.get(index).getPet();
   }
 
   /**
@@ -177,5 +178,23 @@ public class ReservationList implements Serializable
       }
     }
     return true;
+  }
+
+  public void checkAvailability(String phoneNumber, MyDate startDate, MyDate endDate)
+  {
+    for (Reservation reservation : reservations)
+    {
+      if (reservation.getPet().getCustomer().getPhoneNumber().equals(phoneNumber))
+      {
+        if (reservation.getStartDate().isBefore(startDate) && reservation.getEndDate().isAfter(startDate))
+        {
+          throw new IllegalArgumentException("Pet is already reserved for that date.");
+        }
+        if (reservation.getStartDate().isBefore(endDate) && reservation.getEndDate().isAfter(endDate))
+        {
+          throw new IllegalArgumentException("Pet is already reserved for that date.");
+        }
+      }
+    }
   }
 }

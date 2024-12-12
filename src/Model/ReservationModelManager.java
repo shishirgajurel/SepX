@@ -2,20 +2,17 @@ package Model;
 import parser.ParserException;
 import parser.XmlJsonParser;
 import utils.MyFileHandler;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-
 public class ReservationModelManager
 {
   private String fileName;
-
+  private ReservationModelManager reservationModelManager;
   public ReservationModelManager(String fileName)
   {
     this.fileName = fileName;
   }
-
   public ReservationList getAllReservations()
   {
     ReservationList allReservations = new ReservationList();
@@ -37,7 +34,6 @@ public class ReservationModelManager
     }
     return allReservations;
   }
-
   public void saveReservations(ReservationList reservations)
   {
     try
@@ -53,19 +49,27 @@ public class ReservationModelManager
       System.out.println("IO Error writing to file ");
     }
   }
-
   public void changeStartDate(ReservationList reservations, String phoneNumber ,MyDate newStartDate)
   {
     reservations.getReservationByCustomersPhoneNumber(phoneNumber).setStartDate(newStartDate, reservations);
     saveReservations(reservations);
   }
-
   public void changeEndDate(ReservationList reservations, String phoneNumber ,MyDate newEndDate)
   {
     reservations.getReservationByCustomersPhoneNumber(phoneNumber).setEndDate(newEndDate, reservations);
     saveReservations(reservations);
   }
 
+  public void setStartDate(ReservationList reservations, String phoneNumber ,MyDate newStartDate)
+  {
+    reservations.getReservationByCustomersPhoneNumber(phoneNumber).setStartDate(newStartDate, reservations);
+    saveReservations(reservations);
+  }
+  public void setEndDate(ReservationList reservations, String phoneNumber ,MyDate newEndDate)
+  {
+    reservations.getReservationByCustomersPhoneNumber(phoneNumber).setEndDate(newEndDate, reservations);
+    saveReservations(reservations);
+  }
   public void saveToXML(ReservationList reservations, String fileNameXML)
   {
     try
@@ -79,6 +83,11 @@ public class ReservationModelManager
     {
       System.out.println("Error parsing to XML");
     }
+  }
+
+  public void checkAvailability(ReservationList reservations, String phoneNumber, MyDate startDate, MyDate endDate)
+  {
+    reservations.checkAvailability(phoneNumber, startDate, endDate);
   }
 
 }
