@@ -115,66 +115,90 @@ import javafx.scene.control.TextField;
      }
 
      if (event.getSource() == AddReservation) {
-       Alert alert = new Alert(Alert.AlertType.INFORMATION, "Do you really want to add a reservation?", ButtonType.YES, ButtonType.NO);
-       alert.setTitle("Exit");
-       alert.setHeaderText(null);
-       alert.showAndWait();
-       if (alert.getResult() == ButtonType.YES) {
-         Pet selectedPet = petTable.getSelectionModel().getSelectedItem();
-         ReservationModelManager reservationModelManager = new ReservationModelManager("reservations.bin");
-         ReservationList allReservations = reservationModelManager.getAllReservations();
-         Reservation newReservation = new Reservation(selectedPet, addreservationStartDate, addreservationEndDate);
-         allReservations.addReservation(newReservation);
-         reservationModelManager.saveReservations(allReservations);
 
-         System.out.println("AddReservation");
+       try {
+         Alert alert = new Alert(Alert.AlertType.INFORMATION, "Do you really want to add a reservation?", ButtonType.YES, ButtonType.NO);
+         alert.setTitle("Exit");
+         alert.setHeaderText(null);
+         alert.showAndWait();
+         if (alert.getResult() == ButtonType.YES) {
+           Pet selectedPet = petTable.getSelectionModel().getSelectedItem();
+           ReservationModelManager reservationModelManager = new ReservationModelManager("reservations.bin");
+           ReservationList allReservations = reservationModelManager.getAllReservations();
+           Reservation newReservation = new Reservation(selectedPet, addreservationStartDate, addreservationEndDate);
+           allReservations.addReservation(newReservation);
+           reservationModelManager.saveReservations(allReservations);
+           System.out.println("AddReservation");
+
+         }
+         updateReservations();
+         clear();
+       } catch (IllegalArgumentException e) {
+         Alert alert = new Alert(Alert.AlertType.ERROR);
+         alert.setTitle("Error");
+         alert.setHeaderText("Cannot add reservation");
+         alert.setContentText(e.getMessage());
+         alert.showAndWait();
        }
-       updateReservations();
-       clear();
+
      }
 
 
      if (event.getSource() == searchButton) {
-       CustomerModelManager customerModelManager = new CustomerModelManager("customers.bin");
-       CustomerList allCustomers = customerModelManager.getAllCustomers();
-       Customer petsByCustomer = allCustomers.getCustomerByPhoneNumber(searchByPhoneNumber.getText());
+       try {
+         CustomerModelManager customerModelManager = new CustomerModelManager("customers.bin");
+         CustomerList allCustomers = customerModelManager.getAllCustomers();
+         Customer petsByCustomer = allCustomers.getCustomerByPhoneNumber(searchByPhoneNumber.getText());
 
-       PetModelManager petModelManager = new PetModelManager("pets.bin");
-       PetList allPets = petModelManager.getAllPets();
-       PetList petCustomerx = allPets.getPetsByCustomer(petsByCustomer);
-       petTable.getItems().clear();
-       System.out.println(petCustomerx);
-       for (int i = 0; i < petCustomerx.size(); i++) {
-         petTable.getItems().add(petCustomerx.getByIndex(i));
-         System.out.println(petCustomerx.getByIndex(i));
-         clear();
+         PetModelManager petModelManager = new PetModelManager("pets.bin");
+         PetList allPets = petModelManager.getAllPets();
+         PetList petCustomerx = allPets.getPetsByCustomer(petsByCustomer);
+         petTable.getItems().clear();
+         System.out.println(petCustomerx);
+         for (int i = 0; i < petCustomerx.size(); i++) {
+           petTable.getItems().add(petCustomerx.getByIndex(i));
+           System.out.println(petCustomerx.getByIndex(i));
+           clear();
+         }
+       } catch (IllegalArgumentException e) {
+         Alert alert = new Alert(Alert.AlertType.ERROR);
+         alert.setTitle("Error");
+         alert.setHeaderText("Cannot find customer");
+         alert.setContentText(e.getMessage());
+         alert.showAndWait();
        }
      }
 
     //list of reservations by customer phone number and put it on list of reservations table
       if (event.getSource() == listOfPetsSearchButton) {
-        CustomerModelManager customerModelManager = new CustomerModelManager("customers.bin");
-        CustomerList allCustomers = customerModelManager.getAllCustomers();
-        Customer petsByCustomer = allCustomers.getCustomerByPhoneNumber(listOfSearchByPhoneNumber.getText());
+        try {
+          CustomerModelManager customerModelManager = new CustomerModelManager("customers.bin");
+          CustomerList allCustomers = customerModelManager.getAllCustomers();
+          Customer petsByCustomer = allCustomers.getCustomerByPhoneNumber(listOfSearchByPhoneNumber.getText());
 
-        ReservationModelManager reservationModelManager = new ReservationModelManager("reservations.bin");
-        ReservationList allReservations = reservationModelManager.getAllReservations();
-        ReservationList reservationListByPhoneNumber = allReservations.getReservationsByCustomer(petsByCustomer);
-        listOfReservations.getItems().clear();
-        System.out.println("Reservations by phone number:" + listOfSearchByPhoneNumber.getText());
-        System.out.println(reservationListByPhoneNumber);
-        for (int i = 0; i < allReservations.size(); i++) {
-          listOfReservations.getItems().add(reservationListByPhoneNumber.getByIndex(i));
-          System.out.println(reservationListByPhoneNumber.getByIndex(i));
+          ReservationModelManager reservationModelManager = new ReservationModelManager("reservations.bin");
+          ReservationList allReservations = reservationModelManager.getAllReservations();
+          ReservationList reservationListByPhoneNumber = allReservations.getReservationsByCustomer(petsByCustomer);
+          listOfReservations.getItems().clear();
+          System.out.println("Reservations by phone number:" + listOfSearchByPhoneNumber.getText());
+          System.out.println(reservationListByPhoneNumber);
+          for (int i = 0; i < reservationListByPhoneNumber.size(); i++) {
+            listOfReservations.getItems().add(reservationListByPhoneNumber.getByIndex(i));
+            System.out.println(reservationListByPhoneNumber.getByIndex(i));
+          }
           clear();
-
+        } catch (IllegalArgumentException e) {
+          Alert alert = new Alert(Alert.AlertType.ERROR);
+          alert.setTitle("Error");
+          alert.setHeaderText("Cannot find reservations");
+          alert.setContentText(e.getMessage());
+          alert.showAndWait();
         }
       }
      if (event.getSource() == listOfCheckAvailability) {
 
        newStartDate = new MyDate(listOfStartDate.getValue().getDayOfMonth(), listOfStartDate.getValue().getMonthValue(), listOfStartDate.getValue().getYear());
        newEndDate = new MyDate(listOfEndDate.getValue().getDayOfMonth(), listOfEndDate.getValue().getMonthValue(), listOfEndDate.getValue().getYear());
-
        ReservationModelManager reservationModelManager = new ReservationModelManager("reservations.bin");
        ReservationList allReservations = reservationModelManager.getAllReservations();
        SaleModelManager saleModelManager = new SaleModelManager("sales.bin");

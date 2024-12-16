@@ -17,6 +17,7 @@ public class ReservationList implements Serializable
    * The list of reservations.
    */
   private ArrayList<Reservation> reservations;
+  public String cannot_add_reservation_pet_already_exists_in_a_different_reservation = "Cannot add reservation. Pet already exists in a different reservation.";
 
   /**
    * Constructs an empty ReservationList.
@@ -48,7 +49,8 @@ public class ReservationList implements Serializable
     {
       if (reservations.get(i).getPet().equals(newReservation.getPet()) && newReservation.overlaps(reservations.get(i)))
       {
-        throw new IllegalArgumentException("Cannot add reservation. Pet already exists in a different reservation.");
+
+        throw new IllegalArgumentException(cannot_add_reservation_pet_already_exists_in_a_different_reservation);
       }
     }
     reservations.add(newReservation);
