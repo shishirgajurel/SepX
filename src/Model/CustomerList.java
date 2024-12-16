@@ -102,13 +102,12 @@ public class CustomerList implements Serializable
     CustomerList customerList = new CustomerList();
     for (int i = 0; i < customers.size(); i++)
     {
-      if (customers.get(i).getName().toLowerCase().contains(name.toLowerCase(
-          Locale.ROOT)))
+      if (customers.get(i).getName().toLowerCase().contains(name.toLowerCase()))
       {
         customerList.addCustomer(customers.get(i));
       }
     }
-      throw new IllegalArgumentException("Customer not found");
+    return customerList;
   }
 
   /**
@@ -162,7 +161,7 @@ public class CustomerList implements Serializable
 
   /**
    * Check if two customer lists are equal.
-    * @param obj  the object to compare with.
+   * @param obj  the object to compare with.
    * @return true if the customer lists are equal otherwise return false.
    */
   public boolean equals(Object obj)

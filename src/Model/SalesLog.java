@@ -60,15 +60,15 @@ public class SalesLog implements Serializable
 
   /**
    * Get a sale by customer
-   * @return number of sales that the customer has made
-   * @param customer to search for in the sales log.
+   * @return list of sales that the customer has made
+   * @param phoneNumber to search for the customer in the sales log.
    */
-  public SalesLog getSalesByCustomer(Customer customer)
+  public SalesLog getSalesByCustomersPhoneNumber(String phoneNumber)
   {
     SalesLog temp = new SalesLog();
     for (int i = 0; i < sales.size(); i++)
     {
-      if (sales.get(i).getPet().getCustomer().equals(customer))
+      if (sales.get(i).getPet().getCustomer().getPhoneNumber().equals(phoneNumber))
       {
         temp.addSale(sales.get(i));
       }

@@ -10,6 +10,7 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
 
 <AnchorPane prefHeight="511.0" prefWidth="704.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.ReservationController">
    <children>
@@ -19,11 +20,11 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TextField fx:id="searchByPhoneNumber" layoutX="532.0" layoutY="24.0" onAction="#handel" />
+                        <TextField fx:id="searchByPhoneNumber" layoutX="532.0" layoutY="24.0" onAction="#handel" promptText="12345678" />
                         <Label layoutX="362.0" layoutY="24.0" text="Search by Phone Number:" />
                         <Label layoutX="411.0" layoutY="96.0" text="List of pets:" />
-                        <DatePicker fx:id="startDate" layoutX="76.0" layoutY="11.0" onAction="#handel" prefHeight="25.0" prefWidth="126.0" />
-                        <DatePicker fx:id="endDate" layoutX="76.0" layoutY="60.0" onAction="#handel" prefHeight="24.0" prefWidth="125.0" />
+                        <DatePicker fx:id="startDate" layoutX="76.0" layoutY="11.0" prefHeight="25.0" prefWidth="126.0" />
+                        <DatePicker fx:id="endDate" layoutX="76.0" layoutY="60.0" prefHeight="24.0" prefWidth="125.0" />
                         <Label layoutX="14.0" layoutY="14.0" text="Start Date" />
                         <Label layoutX="16.0" layoutY="64.0" text="End Date" />
                         <TableView fx:id="petTable" layoutX="459.0" layoutY="118.0" prefHeight="200.0" prefWidth="200.0">
@@ -32,9 +33,15 @@
                           </columns>
                         </TableView>
                         <Button fx:id="AddReservation" layoutX="140.0" layoutY="320.0" mnemonicParsing="false" onAction="#handel" text="Add Reservation" />
-                        <Button fx:id="checkAvailability" layoutX="83.0" layoutY="112.0" mnemonicParsing="false" onAction="#handel" text="Check Availability" />
+                        <Button fx:id="checkAvailability" layoutX="83.0" layoutY="112.0" mnemonicParsing="false" onAction="#handel" text="Check Availability" textFill="#2b2929" />
                         <TextArea fx:id="available" editable="false" layoutX="18.0" layoutY="168.0" prefHeight="21.0" prefWidth="238.0" />
                         <Button fx:id="searchButton" layoutX="624.0" layoutY="57.0" mnemonicParsing="false" onAction="#handel" text="Search" />
+                        <Label layoutX="316.0" layoutY="58.0" prefHeight="22.0" prefWidth="307.0" text="You can search for pet using Customer Phone Number" />
+                        <Label layoutX="531.0" layoutY="333.0" prefHeight="53.0" prefWidth="151.0" text="These are the list of Pets which is associated with Customers Phone Number" wrapText="true" />
+                        <Label layoutX="40.0" layoutY="218.0" text="If it is Yes then you can continue with Add Reservation " />
+                        <Label layoutX="40.0" layoutY="236.0" text="If it is No then You can't continue with Add Reservation" />
+                        <Label layoutX="39.0" layoutY="254.0" text="You can only add to reservation for 10 pets in that date interval" />
+                        <Line endX="170.5999755859375" layoutX="119.0" layoutY="155.0" startX="-100.0" />
                      </children></AnchorPane>
             </content>
           </Tab>
@@ -50,19 +57,17 @@
                               <TableColumn fx:id="listoflistOfEndDate" prefWidth="75.99993896484375" text="End Date" />
                           </columns>
                         </TableView>
-                        <TextField fx:id="listOfSearchByPhoneNumber" layoutX="189.0" layoutY="30.0" onAction="#handel" />
+                        <TextField fx:id="listOfSearchByPhoneNumber" layoutX="115.0" layoutY="65.0" onAction="#handel" promptText="12345678" />
                         <Label layoutX="14.0" layoutY="34.0" text="Search by Phone Number:" />
-                        <Label layoutX="11.0" layoutY="76.0" text="Search by Customer Name:" />
-                        <TextField fx:id="listOfSearchByCustomerName" layoutX="190.0" layoutY="72.0" onAction="#handel" />
-                        <Button fx:id="listOfPetsSearchButton" layoutX="164.0" layoutY="143.0" mnemonicParsing="false" text="Search" />
+                        <Button fx:id="listOfPetsSearchButton" layoutX="239.0" layoutY="103.0" mnemonicParsing="false" text="Search" />
                         <Button fx:id="listOfUpdate" layoutX="479.0" layoutY="413.0" mnemonicParsing="false" onAction="#handel" text="Update" />
-                        <Button fx:id="listOfDelete" layoutX="570.0" layoutY="413.0" mnemonicParsing="false" onAction="#handel" text="Remove" />
-                        <DatePicker fx:id="listOfStartDate" layoutX="129.0" layoutY="212.0" onAction="#handel" />
-                        <DatePicker fx:id="listOfEndDate" layoutX="130.0" layoutY="281.0" onAction="#handel" />
-                        <Label layoutX="37.0" layoutY="216.0" text="Start Date:" />
-                        <Label layoutX="37.0" layoutY="273.0" text="End Date:" />
-                        <Button fx:id="listOfCheckAvailability" layoutX="153.0" layoutY="328.0" mnemonicParsing="false" onAction="#handel" text="Check Availability" />
-                        <TextArea fx:id="listOfAvailable" editable="false" layoutX="44.0" layoutY="374.0" prefHeight="30.0" prefWidth="260.0" />
+                        <Button fx:id="listOfDelete" layoutX="570.0" layoutY="413.0" mnemonicParsing="false" onAction="#handel" text="Delete" />
+                        <DatePicker fx:id="listOfStartDate" layoutX="122.0" layoutY="166.0" />
+                        <DatePicker fx:id="listOfEndDate" layoutX="123.0" layoutY="235.0" />
+                        <Label layoutX="30.0" layoutY="170.0" text="Start Date:" />
+                        <Label layoutX="30.0" layoutY="227.0" text="End Date:" />
+                        <Button fx:id="listOfCheckAvailability" layoutX="155.0" layoutY="279.0" mnemonicParsing="false" onAction="#handel" prefWidth="115.0" text="Check Availability" />
+                        <TextArea fx:id="listOfAvailable" editable="false" layoutX="34.0" layoutY="327.0" prefHeight="30.0" prefWidth="260.0" />
                      </children>
                   </AnchorPane>
               </content>

@@ -3,7 +3,7 @@
   <pets>
     <gender>F</gender>
     <color>White</color>
-    <price>-1</price>
+    <price>-1.0</price>
     <breeder>John</breeder>
     <name>Misty</name>
     <comment>Does not Bite, and she is okay with kids</comment>
@@ -22,7 +22,7 @@
   <pets>
     <gender>M</gender>
     <color>Brown</color>
-    <price>2000</price>
+    <price>-1.0</price>
     <breeder>John</breeder>
     <name>Rex</name>
     <comment>Does not bark</comment>
@@ -32,12 +32,17 @@
       <day>2</day>
     </birthDate>
     <breed>Golden Retriever</breed>
+    <customer>
+      <emailAddress>jane@gmail.com</emailAddress>
+      <phoneNumber>71146258</phoneNumber>
+      <name>Jane</name>
+    </customer>
   </pets>
   <pets>
     <gender>F</gender>
     <color>Yellow</color>
     <species>Parrot</species>
-    <price>500</price>
+    <price>-1.0</price>
     <name>Tweety</name>
     <comment>Can talk</comment>
     <preferredFood>John</preferredFood>
@@ -46,12 +51,17 @@
       <year>2019</year>
       <day>3</day>
     </birthDate>
+    <customer>
+      <emailAddress>sam@gmao.com</emailAddress>
+      <phoneNumber>26843257</phoneNumber>
+      <name>Sam</name>
+    </customer>
   </pets>
   <pets>
     <isSaltyWater>true</isSaltyWater>
     <gender>M</gender>
     <color>Gold</color>
-    <price>-1</price>
+    <price>-1.0</price>
     <name>Goldie</name>
     <comment>Swims fast</comment>
     <isPredator>false</isPredator>
@@ -70,7 +80,7 @@
     <gender>F</gender>
     <color>Black</color>
     <species>Rabbit</species>
-    <price>200</price>
+    <price>200.0</price>
     <name>Fluffy</name>
     <comment>Does not bite</comment>
     <birthDate>
@@ -83,7 +93,7 @@
     <gender>M</gender>
     <color>Gray</color>
     <species>Mouse</species>
-    <price>100</price>
+    <price>100.0</price>
     <name>Jerry</name>
     <comment>Eats cheese</comment>
     <biteBehaviour>false</biteBehaviour>
@@ -96,7 +106,7 @@
   <pets>
     <gender>m</gender>
     <color>Black</color>
-    <price>-1</price>
+    <price>1000.0</price>
     <breeder>John's family</breeder>
     <name>Milo</name>
     <comment>Loves to play</comment>
@@ -106,16 +116,11 @@
       <day>1</day>
     </birthDate>
     <breed>Persian</breed>
-    <customer>
-      <emailAddress>sally@gmail.com</emailAddress>
-      <phoneNumber>71231457</phoneNumber>
-      <name>Sally</name>
-    </customer>
   </pets>
   <pets>
     <gender>f</gender>
     <color>White</color>
-    <price>1000</price>
+    <price>1000.0</price>
     <breeder>Jane's family</breeder>
     <name>Bella</name>
     <comment>Very affectionate</comment>
@@ -129,7 +134,7 @@
   <pets>
     <gender>M</gender>
     <color>Brown</color>
-    <price>-1</price>
+    <price>2000.0</price>
     <breeder>John's family</breeder>
     <name>Rexion</name>
     <comment>Does not bark</comment>
@@ -139,17 +144,12 @@
       <day>3</day>
     </birthDate>
     <breed>Golden Retriever</breed>
-    <customer>
-      <emailAddress>jane@gmail.com</emailAddress>
-      <phoneNumber>71146258</phoneNumber>
-      <name>Jane</name>
-    </customer>
   </pets>
   <pets>
     <gender>F</gender>
     <color>Yellow</color>
     <species>Parrot</species>
-    <price>500</price>
+    <price>500.0</price>
     <name>Tweetah</name>
     <comment>Can talk</comment>
     <preferredFood>John's family</preferredFood>
@@ -163,7 +163,7 @@
     <isSaltyWater>true</isSaltyWater>
     <gender>M</gender>
     <color>Gold</color>
-    <price>50</price>
+    <price>50.0</price>
     <name>Golden</name>
     <comment>Swims fast</comment>
     <isPredator>false</isPredator>
@@ -177,7 +177,7 @@
     <gender>F</gender>
     <color>Black</color>
     <species>Rabbit</species>
-    <price>200</price>
+    <price>200.0</price>
     <name>Fluffy</name>
     <comment>Does not bite</comment>
     <birthDate>
@@ -190,7 +190,7 @@
     <gender>M</gender>
     <color>Gray</color>
     <species>Mouse</species>
-    <price>100</price>
+    <price>100.0</price>
     <name>Jerry</name>
     <comment>Eats cheese</comment>
     <biteBehaviour>false</biteBehaviour>
@@ -203,7 +203,7 @@
   <pets>
     <gender>M</gender>
     <color>Brown</color>
-    <price>-1</price>
+    <price>2000.0</price>
     <breeder>John's family</breeder>
     <name>Rex</name>
     <comment>Does not bark</comment>
@@ -213,17 +213,12 @@
       <day>8</day>
     </birthDate>
     <breed>Golden Retriever</breed>
-    <customer>
-      <emailAddress>sam@gmao.com</emailAddress>
-      <phoneNumber>26843257</phoneNumber>
-      <name>Sam</name>
-    </customer>
   </pets>
   <pets>
     <gender>F</gender>
     <color>Yellow</color>
     <species>Parrot</species>
-    <price>500</price>
+    <price>500.0</price>
     <name>Tweetah</name>
     <comment>Can talk</comment>
     <preferredFood>John's family</preferredFood>

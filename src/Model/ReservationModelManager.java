@@ -25,15 +25,15 @@ public class ReservationModelManager
     }
     catch (FileNotFoundException e)
     {
-      System.out.println("File was not found, or could not be opened");
+      System.out.println("File was not found, or could not be opened Reservation");
     }
     catch (IOException e)
     {
-      System.out.println("Error reading from file");
+      System.out.println("Error reading from file Reservation");
     }
     catch (ClassNotFoundException e)
     {
-      System.out.println("Error reading from file");
+      System.out.println("Error reading from file Reservation");
     }
     return allReservations;
   }
@@ -45,33 +45,12 @@ public class ReservationModelManager
     }
     catch (FileNotFoundException e)
     {
-      System.out.println("File not found or could not be opened");
+      System.out.println("File not found or could not be opened Reservation");
     }
     catch (IOException e)
     {
-      System.out.println("IO Error writing to file ");
+      System.out.println("IO Error writing to file Reservation ");
     }
-  }
-  public void changeStartDate(ReservationList reservations, String phoneNumber ,MyDate newStartDate)
-  {
-    reservations.getReservationByCustomersPhoneNumber(phoneNumber).setStartDate(newStartDate, reservations);
-    saveReservations(reservations);
-  }
-  public void changeEndDate(ReservationList reservations, String phoneNumber ,MyDate newEndDate)
-  {
-    reservations.getReservationByCustomersPhoneNumber(phoneNumber).setEndDate(newEndDate, reservations);
-    saveReservations(reservations);
-  }
-
-  public void setStartDate(ReservationList reservations, String phoneNumber ,MyDate newStartDate)
-  {
-    reservations.getReservationByCustomersPhoneNumber(phoneNumber).setStartDate(newStartDate, reservations);
-    saveReservations(reservations);
-  }
-  public void setEndDate(ReservationList reservations, String phoneNumber ,MyDate newEndDate)
-  {
-    reservations.getReservationByCustomersPhoneNumber(phoneNumber).setEndDate(newEndDate, reservations);
-    saveReservations(reservations);
   }
   public void saveToXML(ReservationList reservations, String fileNameXML)
   {
@@ -79,28 +58,12 @@ public class ReservationModelManager
     {
       XmlJsonParser parser = new XmlJsonParser();
       File file = parser.toXml(getAllReservations(), fileNameXML);
-      System.out.println("Saved to XML");
+      System.out.println("Saved to Reservation XML");
       System.out.println(file.getAbsolutePath());
     }
     catch (ParserException e)
     {
-      System.out.println("Error parsing to XML");
+      System.out.println("Error parsing to Reservation XML");
     }
   }
-
-  public void checkAvailability(ReservationList reservations, String phoneNumber, MyDate startDate, MyDate endDate)
-  {
-    reservations.checkAvailability(phoneNumber, startDate, endDate);
-  }
-
-  public ReservationList setStartDate(Pos alignment, LocalDate value)
-  {
-    return null;
-  }
-
-  public ReservationList checkAvailability(String text, LocalDate value, LocalDate value1)
-  {
-    return null;
-  }
-
 }

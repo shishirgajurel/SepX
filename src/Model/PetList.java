@@ -31,14 +31,6 @@ public class PetList implements Serializable
     pets.add(pet);
   }
 
-  /**
-   * Get a pet by index.
-   * @return pet.
-   */
-  public Pet getPet(int index)
-  {
-    return pets.get(index);
-  }
 
   /**
    * Get a number of pets
@@ -87,7 +79,7 @@ public class PetList implements Serializable
     PetList petList = new PetList();
     for (int i = 0; i < pets.size(); i++)
     {
-      if (pets.get(i).getName().toLowerCase().contains(name.toLowerCase(Locale.ROOT)))
+      if (pets.get(i).getName().toLowerCase().contains(name.toLowerCase()))
       {
         petList.addPet(pets.get(i));
       }
@@ -120,6 +112,16 @@ public class PetList implements Serializable
   public void removePet(Pet pet)
   {
     pets.remove(pet);
+  }
+
+  /**
+   * return the index of a pet
+   * @param pet to search for
+   * @return the index of the pet
+   */
+  public int indexOf(Pet pet)
+  {
+    return pets.indexOf(pet);
   }
 
   /**
@@ -161,4 +163,6 @@ public class PetList implements Serializable
     }
     return true;
   }
+
+
 }

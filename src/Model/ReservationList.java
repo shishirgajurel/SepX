@@ -108,11 +108,13 @@ public class ReservationList implements Serializable
    * @return a ReservationList of matching reservations.
    * @throws IllegalArgumentException if no reservations match the phone number.
    */
-  public Reservation getReservationByCustomersPhoneNumber(String phoneNumber)
+  public ReservationList getReservationByCustomersPhoneNumber(String phoneNumber)
   {
+    ReservationList reservationList = new ReservationList();
+
     for (Reservation reservation : reservations) {
       if (reservation.getPet().getCustomer().getPhoneNumber().equals(phoneNumber)) {
-        return reservation;
+        reservationList.addReservation(reservation);
       }
     }
     throw new IllegalArgumentException("No reservation found by that phone number");
@@ -198,5 +200,16 @@ public class ReservationList implements Serializable
     }
   }
 
-
+  public ReservationList getReservationsByCustomer(Customer petsByCustomer)
+  {
+    ReservationList reservationList = new ReservationList();
+    for (Reservation reservation : reservations)
+    {
+      if (reservation.getPet().getCustomer().equals(petsByCustomer))
+      {
+        reservationList.addReservation(reservation);
+      }
+    }
+    return reservationList;
+  }
 }

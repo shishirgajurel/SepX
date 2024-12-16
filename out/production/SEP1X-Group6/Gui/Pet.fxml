@@ -1,75 +1,247 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.Pet">
-   <children>
-      <TabPane prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
-        <tabs>
-          <Tab text="Add">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="511.0" prefWidth="701.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.PetController">
+    <tabs>
+        <Tab text="Add Pet">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Label layoutX="51.0" layoutY="43.0" text="Name:" />
-                        <Label layoutX="38.0" layoutY="90.0" text="Comment:" />
-                        <Label layoutX="43.0" layoutY="134.0" text="Color:" />
-                        <Label layoutX="42.0" layoutY="178.0" text="Gender:" />
-                        <Label layoutX="49.0" layoutY="220.0" text="Price:" />
-                        <TextField layoutX="184.0" layoutY="39.0" />
-                        <TextField layoutX="185.0" layoutY="85.0" />
-                        <TextField layoutX="188.0" layoutY="131.0" />
-                        <TextField layoutX="192.0" layoutY="176.0" />
-                        <TextField layoutX="193.0" layoutY="217.0" />
-                        <Button layoutX="422.0" layoutY="263.0" mnemonicParsing="false" text="Save" />
-                     </children>
-                  </AnchorPane>
-            </content>
-          </Tab>
-          <Tab text="Update">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Label layoutX="285.0" layoutY="23.0" text="Name:" />
-                        <Label layoutX="278.0" layoutY="58.0" text="Comment:" />
-                        <Label layoutX="287.0" layoutY="97.0" text="Color:" />
-                        <Label layoutX="280.0" layoutY="141.0" text="Gender:" />
-                        <Label layoutX="292.0" layoutY="179.0" text="Price:" />
-                        <TextField layoutX="381.0" layoutY="19.0" />
-                        <TextField layoutX="381.0" layoutY="53.0" />
-                        <TextField layoutX="385.0" layoutY="93.0" />
-                        <TextField layoutX="386.0" layoutY="136.0" />
-                        <TextField layoutX="384.0" layoutY="175.0" />
-                        <Button layoutX="422.0" layoutY="260.0" mnemonicParsing="false" text="Update" />
-                     </children>
-                  </AnchorPane>
-            </content>
-          </Tab>
-            <Tab text="List Of Pets">
-              <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TableView prefHeight="373.0" prefWidth="600.0">
-                          <columns>
-                            <TableColumn prefWidth="165.5999755859375" text="Name" />
-                            <TableColumn prefWidth="140.800048828125" text="Commnet" />
-                              <TableColumn prefWidth="81.5999755859375" text="Color" />
-                              <TableColumn prefWidth="83.20001220703125" text="Gender" />
-                              <TableColumn prefWidth="129.60009765625" text="Price" />
-                          </columns>
+                    <children>
+                        <TabPane prefHeight="488.0" prefWidth="701.0" tabClosingPolicy="UNAVAILABLE">
+                            <tabs>
+                                <Tab text="Dog">
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                            <children>
+                                                <TextField fx:id="dogNameField" layoutX="71.0" layoutY="14.0" />
+                                                <TextField fx:id="dogColorField" layoutX="72.0" layoutY="127.0" />
+                                                <TextField fx:id="dogPriceField" layoutX="73.0" layoutY="159.0" />
+                                                <Label layoutX="28.0" layoutY="18.0" text="Name" />
+                                                <Label layoutX="28.0" layoutY="52.0" text="Gender" />
+                                                <Label layoutX="16.0" layoutY="91.0" text="Birthdate" />
+                                                <Label layoutX="28.0" layoutY="131.0" text="Color" />
+                                                <Label layoutX="28.0" layoutY="163.0" text="Price" />
+                                                <TextField fx:id="dogBreedField" layoutX="72.0" layoutY="198.0" />
+                                                <Label layoutX="20.0" layoutY="233.0" text="Breeder" />
+                                                <Label layoutX="29.0" layoutY="202.0" prefWidth="31.0" text="Breed" />
+                                                <TextField fx:id="dogBreederField" layoutX="71.0" layoutY="229.0" />
+                                                <DatePicker fx:id="dogBirthDatePicker" layoutX="73.0" layoutY="87.0" />
+                                                <TextArea fx:id="dogCommentArea" layoutX="320.0" layoutY="40.0" prefHeight="200.0" prefWidth="200.0" />
+                                                <Label layoutX="380.0" layoutY="18.0" text="Comment" />
+                                                <Button layoutX="248.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleAddDog" text="Add Pet" />
+                                                <RadioButton fx:id="dogMaleRadio" layoutX="73.0" layoutY="52.0" mnemonicParsing="false" text="Male">
+                                                    <toggleGroup>
+                                                        <ToggleGroup fx:id="DogGenderToggle" />
+                                                    </toggleGroup></RadioButton>
+                                                <RadioButton fx:id="dogFemaleRadio" layoutX="161.0" layoutY="52.0" mnemonicParsing="false" text="Female" toggleGroup="$DogGenderToggle" />
+                                            </children>
+                                        </AnchorPane>
+                                    </content>
+                                </Tab>
+                                <Tab text="Cat">
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                            <children>
+                                                <TextField fx:id="catPriceField" layoutX="75.0" layoutY="226.0" />
+                                                <TextField fx:id="catBreedField" layoutX="75.0" layoutY="198.0" />
+                                                <TextField fx:id="catBreederField" layoutX="75.0" layoutY="159.0" />
+                                                <TextField fx:id="catNameField" layoutX="75.0" layoutY="18.0" />
+                                                <Label layoutX="23.0" layoutY="18.0" text="Name" />
+                                                <Label layoutX="19.0" layoutY="93.0" text="Gender" />
+                                                <Label layoutX="17.0" layoutY="130.0" text="Birthdate" />
+                                                <Label layoutX="25.0" layoutY="58.0" text="Color" />
+                                                <Label layoutX="28.0" layoutY="230.0" text="Price" />
+                                                <TextField fx:id="catColorField" layoutX="75.0" layoutY="54.0" />
+                                                <Label layoutX="21.0" layoutY="163.0" text="Breeder" />
+                                                <Label layoutX="23.0" layoutY="193.0" prefWidth="31.0" text="Breed" />
+                                                <DatePicker fx:id="catBirthDatePicker" layoutX="75.0" layoutY="126.0" />
+                                                <TextArea fx:id="catCommentArea" layoutX="368.0" layoutY="26.0" prefHeight="200.0" prefWidth="200.0" />
+                                                <Label layoutX="441.0" layoutY="9.0" text="Comment" />
+                                                <Button layoutX="241.0" layoutY="264.0" mnemonicParsing="false" onAction="#handleAddCat" text="Add Pet" />
+                                                <RadioButton fx:id="catMaleRadio" layoutX="75.0" layoutY="93.0" mnemonicParsing="false" text="Male">
+                                                    <toggleGroup>
+                                                        <ToggleGroup fx:id="CatGenderToggle" />
+                                                    </toggleGroup></RadioButton>
+                                                <RadioButton fx:id="catFemaleRadio" layoutX="163.0" layoutY="93.0" mnemonicParsing="false" text="Female" toggleGroup="$CatGenderToggle" />
+                                            </children>
+                                        </AnchorPane>
+                                    </content>
+                                </Tab>
+                                <Tab text="Rodant">
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                            <children>
+                                                <Label layoutX="424.0" layoutY="14.0" text="Comment" />
+                                                <TextArea fx:id="rodentCommentArea" layoutX="361.0" layoutY="38.0" prefHeight="200.0" prefWidth="200.0" />
+                                                <Label layoutX="27.0" layoutY="23.0" text="Name" />
+                                                <Label layoutX="27.0" layoutY="60.0" text="Gender" />
+                                                <Label layoutX="19.0" layoutY="106.0" text="Birthdate" />
+                                                <Label layoutX="27.0" layoutY="145.0" text="Color" />
+                                                <Label layoutX="30.0" layoutY="172.0" text="Price" />
+                                                <Label layoutX="27.0" layoutY="207.0" text="Species" />
+                                                <TextField fx:id="rodentNameField" layoutX="100.0" layoutY="19.0" />
+                                                <RadioButton fx:id="rodentMaleRadio" layoutX="111.0" layoutY="60.0" mnemonicParsing="false" text="Male">
+                                                    <toggleGroup>
+                                                        <ToggleGroup fx:id="RodantGenderToggle" />
+                                                    </toggleGroup></RadioButton>
+                                                <RadioButton fx:id="rodentFemaleRadio" layoutX="186.0" layoutY="60.0" mnemonicParsing="false" text="Female" toggleGroup="$RodantGenderToggle" />
+                                                <DatePicker fx:id="rodentBirthDatePicker" layoutX="99.0" layoutY="102.0" />
+                                                <TextField fx:id="rodentColorField" layoutX="99.0" layoutY="141.0" />
+                                                <TextField fx:id="rodentPriceField" layoutX="100.0" layoutY="168.0" />
+                                                <TextField fx:id="rodentSpeciesField" layoutX="100.0" layoutY="203.0" />
+                                                <Button layoutX="220.0" layoutY="272.0" mnemonicParsing="false" onAction="#handleAddRodent" text="Add Pet" />
+                                                <RadioButton fx:id="rodentIsBite" layoutX="99.0" layoutY="238.0" mnemonicParsing="false" text="Yes">
+                                                    <toggleGroup>
+                                                        <ToggleGroup fx:id="RodantBiteToggle" />
+                                                    </toggleGroup></RadioButton>
+                                                <RadioButton fx:id="rodentIsNotBite" layoutX="196.0" layoutY="238.0" mnemonicParsing="false" text="No" toggleGroup="$RodantBiteToggle" />
+                                                <Label layoutX="27.0" layoutY="238.0" text="is it Bite" />
+                                            </children>
+                                        </AnchorPane>
+                                    </content>
+                                </Tab>
+                                <Tab text="Bird">
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                            <children>
+                                                <TextField fx:id="birdNameField" layoutX="86.0" layoutY="31.0" />
+                                                <TextField fx:id="birdPriceField" layoutX="86.0" layoutY="201.0" />
+                                                <TextField fx:id="birdColorField" layoutX="86.0" layoutY="159.0" />
+                                                <TextArea fx:id="birdCommentArea" layoutX="370.0" layoutY="27.0" prefHeight="200.0" prefWidth="200.0" />
+                                                <RadioButton fx:id="birdMaleRadio" layoutX="86.0" layoutY="75.0" mnemonicParsing="false" text="Male">
+                                                    <toggleGroup>
+                                                        <ToggleGroup fx:id="BirdGenderToggle" />
+                                                    </toggleGroup></RadioButton>
+                                                <RadioButton fx:id="birdFemaleRadio" layoutX="176.0" layoutY="75.0" mnemonicParsing="false" text="Female" toggleGroup="$BirdGenderToggle" />
+                                                <DatePicker fx:id="birdBirthDatePicker" layoutX="86.0" layoutY="114.0" />
+                                                <TextField fx:id="birdSpeciesField" layoutX="86.0" layoutY="240.0" />
+                                                <Label layoutX="27.0" layoutY="35.0" text="Name" />
+                                                <Label layoutX="23.0" layoutY="75.0" text="Gender" />
+                                                <Label layoutX="23.0" layoutY="118.0" text="Birthdate" />
+                                                <Label layoutX="23.0" layoutY="163.0" text="Color" />
+                                                <Label layoutX="28.0" layoutY="205.0" text="Price" />
+                                                <Label layoutX="28.0" layoutY="244.0" text="Species" />
+                                                <Button layoutX="370.0" layoutY="262.0" mnemonicParsing="false" onAction="#handleAddBird" text="Add Pet" />
+                                                <Label layoutX="412.0" layoutY="5.0" text="Comment" />
+                                    <TextField fx:id="birdFoodField" layoutX="131.0" layoutY="275.0" />
+                                    <Label layoutX="27.0" layoutY="279.0" text="Preferred food" />
+                                            </children>
+                                        </AnchorPane>
+                                    </content>
+                                </Tab>
+                                <Tab text="Fish">
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                            <children>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                    <children>
+                                                        <TextField fx:id="fishNameField" layoutX="86.0" layoutY="31.0" />
+                                                        <TextField fx:id="fishPriceField" layoutX="86.0" layoutY="201.0" />
+                                                        <TextField fx:id="fishColorField" layoutX="86.0" layoutY="159.0" />
+                                                        <TextArea fx:id="fishCommentArea" layoutX="370.0" layoutY="27.0" prefHeight="200.0" prefWidth="200.0" />
+                                                        <RadioButton fx:id="fishMaleRadio" layoutX="86.0" layoutY="75.0" mnemonicParsing="false" text="Male">
+                                                            <toggleGroup>
+                                                                <ToggleGroup fx:id="FishGenderToggle" />
+                                                            </toggleGroup></RadioButton>
+                                                        <RadioButton fx:id="fishFemaleRadio" layoutX="176.0" layoutY="75.0" mnemonicParsing="false" text="Female" toggleGroup="$FishGenderToggle" />
+                                                        <DatePicker fx:id="fishBirthDatePicker" layoutX="86.0" layoutY="114.0" />
+                                                        <TextField fx:id="fishSpeciesField" layoutX="86.0" layoutY="240.0" />
+                                                        <Label layoutX="27.0" layoutY="35.0" text="Name" />
+                                                        <Label layoutX="23.0" layoutY="75.0" text="Gender" />
+                                                        <Label layoutX="23.0" layoutY="118.0" text="Birthdate" />
+                                                        <Label layoutX="23.0" layoutY="163.0" text="Color" />
+                                                        <Label layoutX="28.0" layoutY="205.0" text="Price" />
+                                                        <Label layoutX="28.0" layoutY="244.0" text="Species" />
+                                                        <Button layoutX="370.0" layoutY="262.0" mnemonicParsing="false" onAction="#handleAddFish" text="Add Pet" />
+                                                        <Label layoutX="412.0" layoutY="5.0" text="Comment" />
+                                                    </children>
+                                                </AnchorPane>
+                                                <RadioButton fx:id="fishFreshWaterRadio" layoutX="114.0" layoutY="274.0" mnemonicParsing="false" text="Fresh">
+                                                    <toggleGroup>
+                                                        <ToggleGroup fx:id="FishWaterToggle" />
+                                                    </toggleGroup></RadioButton>
+                                                <RadioButton fx:id="fishSaltWaterRadio" layoutX="185.0" layoutY="274.0" mnemonicParsing="false" text="Salty" toggleGroup="$FishWaterToggle" />
+                                                <Label layoutX="14.0" layoutY="275.0" text="Water condition" />
+                                                <Label layoutX="14.0" layoutY="302.0" text="is Pretedor" />
+                                                <RadioButton fx:id="fishPredetor" layoutX="114.0" layoutY="302.0" mnemonicParsing="false" text="Yes">
+                                                    <toggleGroup>
+                                                        <ToggleGroup fx:id="FishPredetorToggle" />
+                                                    </toggleGroup></RadioButton>
+                                                <RadioButton fx:id="fishNotPredetor" layoutX="180.0" layoutY="302.0" mnemonicParsing="false" text="No" toggleGroup="$FishPredetorToggle" />
+                                            </children>
+                                        </AnchorPane>
+                                    </content>
+                                </Tab>
+                                <Tab text="Various">
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                            <children>
+                                                <Label layoutX="443.0" layoutY="14.0" text="Comment" />
+                                                <TextArea fx:id="variousCommentArea" layoutX="386.0" layoutY="36.0" prefHeight="200.0" prefWidth="200.0" />
+                                                <Label layoutX="22.0" layoutY="27.0" text="Name" />
+                                                <Label layoutX="19.0" layoutY="163.0" text="Color" />
+                                                <Label layoutX="20.0" layoutY="205.0" text="Price" />
+                                                <Label layoutX="13.0" layoutY="240.0" text="Species" />
+                                                <TextField fx:id="variousNameField" layoutX="80.0" layoutY="23.0" />
+                                                <RadioButton fx:id="variousMaleRadio" layoutX="76.0" layoutY="60.0" mnemonicParsing="false" text="Male">
+                                                    <toggleGroup>
+                                                        <ToggleGroup fx:id="VariousGenderToggle" />
+                                                    </toggleGroup></RadioButton>
+                                                <RadioButton fx:id="variousFemaleRadio" layoutX="162.0" layoutY="60.0" mnemonicParsing="false" text="Female" toggleGroup="$VariousGenderToggle" />
+                                                <DatePicker fx:id="variousBirthDatePicker" layoutX="74.0" layoutY="110.0" />
+                                                <TextField fx:id="variousSpeciesField" layoutX="73.0" layoutY="236.0" />
+                                                <TextField fx:id="variousPriceField" layoutX="73.0" layoutY="201.0" />
+                                                <TextField fx:id="variousColorField" layoutX="73.0" layoutY="159.0" />
+                                                <Button layoutX="264.0" layoutY="303.0" mnemonicParsing="false" onAction="#handleAddVarious" text="Add Pet" />
+                                                <Label layoutX="19.0" layoutY="60.0" text="Gender" />
+                                                <Label layoutX="18.0" layoutY="114.0" text="Birth Date" />
+                                            </children>
+                                        </AnchorPane>
+                                    </content>
+                                </Tab>
+                            </tabs>
+                        </TabPane>
+                    </children></AnchorPane>
+            </content>
+        </Tab>
+        <Tab text="Modify pet">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                    <children>
+                        <TableView layoutX="251.0" layoutY="45.0" prefHeight="215.0" prefWidth="325.0">
+                            <columns>
+                                <TableColumn prefWidth="75.0" text="Customer" />
+                                <TableColumn prefWidth="75.0" text="Name" />
+                                <TableColumn prefWidth="75.0" text="Price" />
+                                <TableColumn prefWidth="75.0" text="Comment" />
+                            </columns>
                         </TableView>
-                     </children>
-                  </AnchorPane>
-              </content>
-            </Tab>
-        </tabs>
-      </TabPane>
-   </children>
-</AnchorPane>
+                        <Label layoutX="401.0" layoutY="29.0" text="Pet List" />
+                        <Label layoutX="21.0" layoutY="29.0" text="Pet Name" />
+                        <Label layoutX="65.0" layoutY="146.0" text="Comment" />
+                        <Label layoutX="24.0" layoutY="100.0" text="Price" />
+                        <Label layoutX="11.0" layoutY="64.0" text="Costumer" />
+                        <TextArea layoutX="14.0" layoutY="171.0" prefHeight="200.0" prefWidth="200.0" />
+                        <TextField layoutX="75.0" layoutY="96.0" />
+                        <TextField layoutX="76.0" layoutY="60.0" />
+                        <TextField layoutX="77.0" layoutY="26.0" />
+                        <Button layoutX="274.0" layoutY="271.0" mnemonicParsing="false" text="Modify Pet" />
+                        <Button layoutX="442.0" layoutY="271.0" mnemonicParsing="false" text="Remove Pet" />
+                        <Button layoutX="135.0" layoutY="134.0" mnemonicParsing="false" text="Search" />
+                    </children></AnchorPane>
+            </content>
+        </Tab>
+    </tabs>
+</TabPane>

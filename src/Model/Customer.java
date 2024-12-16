@@ -126,7 +126,7 @@ public class Customer implements Serializable
     {
       return false;
     }
-    Customer other = (Customer) obj;
+    Customer other = (Customer)obj;
     return name.equals(other.name) && phoneNumber.equals(other.phoneNumber) && emailAddress.equals(other.emailAddress);
   }
 }

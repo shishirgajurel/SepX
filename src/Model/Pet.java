@@ -17,7 +17,7 @@ public abstract class Pet implements Serializable
   private String comment;
   private MyDate birthDate;
   private String color;
-  private int price;
+  private double price;
   private Customer customer;
 
   /**
@@ -129,7 +129,7 @@ public abstract class Pet implements Serializable
    *
    * @return price as int
    */
-  public int getPrice()
+  public double getPrice()
   {
     return price;
   }
@@ -139,7 +139,7 @@ public abstract class Pet implements Serializable
    *
    * @param price as int
    */
-  public void setPrice(int price)
+  public void setPrice(double price)
   {
     this.price = price;
   }
@@ -174,7 +174,7 @@ public abstract class Pet implements Serializable
   {
     String strGender;
 
-    if (gender == 'm')
+    if (gender == 'm' || gender == 'M')
     {
       strGender = "Male";
     }
@@ -200,6 +200,7 @@ public abstract class Pet implements Serializable
 
   /**
    * Checks if this pet is equal to another object.
+   *
    * @param obj the object to compare with.
    * @return true if the objects are equal, false otherwise.
    */
@@ -211,18 +212,19 @@ public abstract class Pet implements Serializable
     }
 
     Pet other = (Pet) obj;
-
-    if (price != -1)
+    if (price == -1)
     {
-    return other.name.equals(name) && other.gender == gender && other.comment
-        .equals(comment) && other.birthDate.equals(birthDate) && other.color
-        .equals(color) && other.price == price;
+      return other.name.equals(name) && other.gender == gender
+          && other.comment.equals(comment) && other.birthDate.equals(birthDate)
+          && other.color.equals(color) && other.price == price
+          && other.customer.equals(customer);
     }
     else
     {
       return other.name.equals(name) && other.gender == gender
           && other.comment.equals(comment) && other.birthDate.equals(birthDate)
-          && other.color.equals(color) && other.customer.equals(customer);
+          && other.color.equals(color) && other.price == price
+          && other.customer == null;
     }
   }
 }

@@ -22,15 +22,15 @@ public class SaleModelManager
         }
         catch (FileNotFoundException e)
         {
-          System.out.println("File not found");
+          System.out.println("File not found sale");
         }
         catch (IOException e)
         {
-          System.out.println("IO Error reading file");
+          System.out.println("IO Error reading file sale");
         }
         catch (ClassNotFoundException e)
         {
-          System.out.println("Class Not Found");
+          System.out.println("Class Not Found sale");
         }
         return allSales;
     }
@@ -43,15 +43,15 @@ public class SaleModelManager
         }
         catch (FileNotFoundException e)
         {
-          System.out.println("File not found or could not be opened");
+          System.out.println("File not found or could not be opened sale");
         }
         catch (IOException e)
         {
-          System.out.println("IO Error writing to file ");
+          System.out.println("IO Error writing to file sale ");
         }
     }
 
-    public void changeDiscount(SalesLog sales, Pet pet, double newDiscount)
+    public void changeDiscount(SalesLog sales, Pet pet, int newDiscount)
     {
         sales.getSaleByPet(pet).setDiscount(newDiscount);
         saveSales(sales);

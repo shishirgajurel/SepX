@@ -217,6 +217,15 @@ public class MyDate implements Serializable
     MyDate other = (MyDate) obj;
     return day == other.day && month == other.month && year == other.year;
   }
+
+  public static MyDate today()
+  {
+    java.util.Calendar rightNow = java.util.Calendar.getInstance();
+    int day = rightNow.get(java.util.Calendar.DAY_OF_MONTH);
+    int month = rightNow.get(java.util.Calendar.MONTH) + 1;
+    int year = rightNow.get(java.util.Calendar.YEAR);
+    return new MyDate(day, month, year);
+  }
 }
 
 

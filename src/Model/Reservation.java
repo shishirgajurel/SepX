@@ -47,7 +47,6 @@ public class Reservation implements Serializable
       throw new IllegalArgumentException("Pet belongs in the pet shop, and has no customer");
     }
   }
-
   /**
    * Sets a new start date for the reservation, ensuring no overlap with existing
    * reservations.

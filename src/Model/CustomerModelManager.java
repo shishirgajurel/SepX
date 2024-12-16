@@ -23,15 +23,15 @@ public class CustomerModelManager
     }
     catch (FileNotFoundException e)
     {
-      System.out.println("File was not found, or could not be opened");
+      System.out.println("File was not found, or could not be opened Customer");
     }
     catch (IOException e)
     {
-      System.out.println("Error reading from file");
+      System.out.println("Error reading from file Customer");
     }
     catch (ClassNotFoundException e)
     {
-      System.out.println("Error reading from file");
+      System.out.println("Error reading from file Customer");
     }
     return allCustomers;
   }
@@ -44,11 +44,11 @@ public class CustomerModelManager
     }
     catch (FileNotFoundException e)
     {
-      System.out.println("File not found or could not be opened");
+      System.out.println("File not found or could not be opened Customer");
     }
     catch (IOException e)
     {
-      System.out.println("IO Error writing to file ");
+      System.out.println("IO Error writing to file  Customer");
     }
   }
 
@@ -64,7 +64,7 @@ public class CustomerModelManager
     {
       if (customers.getByIndex(i).getPhoneNumber().equals(newPhoneNumber))
       {
-        throw new IllegalArgumentException("Phone number already exists");
+        throw new IllegalArgumentException("Phone number already exists Customer");
       }
       customers.getCustomerByPhoneNumber(phoneNumber).setPhoneNumber(newPhoneNumber);
       saveCustomers(customers);

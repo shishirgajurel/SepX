@@ -1,8 +1,8 @@
 package Model;
-import parser.ParserException;
+
 import parser.XmlJsonParser;
 import utils.MyFileHandler;
-
+import parser.ParserException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -26,15 +26,15 @@ public class PetModelManager
     }
     catch (FileNotFoundException e)
     {
-      System.out.println("File was not found, or could not be opened");
+      System.out.println("File was not found, or could not be opened pet");
     }
     catch (IOException e)
     {
-      System.out.println("IO Error reading from file");
+      System.out.println("IO Error reading from file pet");
     }
     catch (ClassNotFoundException e)
     {
-      System.out.println("Error reading from file");
+      System.out.println("Error reading from file pet");
     }
     return allPets;
   }
@@ -47,11 +47,11 @@ public class PetModelManager
     }
     catch (FileNotFoundException e)
     {
-      System.out.println("File not found or could not be opened");
+      System.out.println("File not found or could not be opened pet");
     }
     catch (IOException e)
     {
-      System.out.println("IO Error writing to file ");
+      System.out.println("IO Error writing to file pet ");
     }
   }
 
@@ -81,12 +81,11 @@ public class PetModelManager
     {
       XmlJsonParser parser = new XmlJsonParser();
       File file = parser.toXml(getAllPets(), fileNameXML);
-      System.out.println("File saved as: " + file.getAbsolutePath());
+      System.out.println("File saved as pet: " + file.getAbsolutePath());
     }
     catch (ParserException e)
     {
       throw new RuntimeException(e);
     }
   }
-
 }

@@ -3,7 +3,7 @@ package main;
 import Model.*;
 import Model.PetModelManager;
 
-public class TestModel
+public class Initializer
 {
   public static void main(String[] args)
   {
@@ -62,17 +62,15 @@ public class TestModel
 
 
     Sale sale = new Sale(cat, customer1);
-    Sale sale1 = new Sale(dog1, customer2);
-    Sale sale2 = new Sale(dog2, customer3);
+    Sale sale1 = new Sale(dog, customer2);
+    Sale sale2 = new Sale(bird, customer3);
     Sale sale3 = new Sale(fish, customer4);
-    Sale sale4 = new Sale(cat1, customer5);
 
     SalesLog salesLog = new SalesLog();
     salesLog.addSale(sale);
     salesLog.addSale(sale1);
     salesLog.addSale(sale2);
     salesLog.addSale(sale3);
-    salesLog.addSale(sale4);
 
     PetModelManager petModelManager = new PetModelManager("pets.bin");
     petModelManager.savePets(petList);
@@ -84,19 +82,20 @@ public class TestModel
     SaleModelManager saleModelManager = new SaleModelManager("sales.bin");
     saleModelManager.saveSales(salesLog);
 
-    Reservation reservation0 = new Reservation(cat1, new MyDate(12,12,2024), new MyDate(12,12,2026));
-   Reservation reservation1 = new Reservation(dog1, new MyDate(12,12,2024), new MyDate(12,12,2026));
-//  Reservation reservation2 = new Reservation(dog2, new MyDate(12,12,2024), new MyDate(12,12,2026));
 
+
+//    Reservation reservation0 = new Reservation(cat1, new MyDate(13,12,2024), new MyDate(12,12,2026));
+//    Reservation reservation1 = new Reservation(dog1, new MyDate(15,12,2024), new MyDate(12,12,2026));
+//////    Reservation reservation2 = new Reservation(dog2, new MyDate(12,12,2024), new MyDate(12,12,2026));
+//
     ReservationList reservationList = new ReservationList();
-   reservationList.addReservation(reservation0);
-    reservationList.addReservation(reservation1);
+//    reservationList.addReservation(reservation0);
+//    reservationList.addReservation(reservation1);
 //    reservationList.addReservation(reservation2);
 
     ReservationModelManager reservationModelManager = new ReservationModelManager("reservations.bin");
     reservationModelManager.saveReservations(reservationList);
 
 
-//    System.out.println(saleModelManager.getAllSales());
   }
 }
