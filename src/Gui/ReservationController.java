@@ -9,13 +9,10 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import java.io.IOException;
-import java.util.Date;
-
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
  public class ReservationController extends Application{
 
-//Add table view for Reservation
    @FXML  private DatePicker startDate;
    @FXML private DatePicker endDate;
    @FXML private Button checkAvailability;
@@ -160,19 +157,18 @@ import javafx.scene.control.TextField;
         CustomerList allCustomers = customerModelManager.getAllCustomers();
         Customer petsByCustomer = allCustomers.getCustomerByPhoneNumber(listOfSearchByPhoneNumber.getText());
 
-        PetModelManager petModelManager = new PetModelManager("pets.bin");
-        PetList allPets = petModelManager.getAllPets();
-        PetList petCustomerx = allPets.getPetsByCustomer(petsByCustomer);
-
         ReservationModelManager reservationModelManager = new ReservationModelManager("reservations.bin");
         ReservationList allReservations = reservationModelManager.getAllReservations();
+        ReservationList reservationListByPhoneNumber = allReservations.getReservationsByCustomer(petsByCustomer);
         listOfReservations.getItems().clear();
+        System.out.println("Reservations by phone number:" + listOfSearchByPhoneNumber.getText());
+        System.out.println(reservationListByPhoneNumber);
         for (int i = 0; i < allReservations.size(); i++) {
-          if (allReservations.getByIndex(i).getPet().getCustomer().equals(petsByCustomer)) {
-            listOfReservations.getItems().add(allReservations.getByIndex(i));
-          }
+          listOfReservations.getItems().add(reservationListByPhoneNumber.getByIndex(i));
+          System.out.println(reservationListByPhoneNumber.getByIndex(i));
+          clear();
+
         }
-        clear();
       }
      if (event.getSource() == listOfCheckAvailability) {
 
